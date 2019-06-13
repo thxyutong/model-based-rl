@@ -52,15 +52,9 @@ class Accuracy():
         @param preds: batch_size x n_categories
         @param targs: batch_size
         '''
-        # print(preds)
-        # print(targs)
         preds = preds.argmax(dim=1)
-        # print(preds)
         self.total += targs.shape[0]
         self.correct += preds.eq(targs).sum().item()
-        # print(self.total)
-        # print(self.correct)
-        # assert False
 
     def report(self, reset=False):
         res = 1. * self.correct / self.total
