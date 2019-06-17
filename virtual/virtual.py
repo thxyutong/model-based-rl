@@ -53,6 +53,16 @@ class VirtualEnv:
                 # if args.eval_every > 0 and step % args.eval_every == 0:
                 #     self.evaluate()
 
+    def predict(self, states, actions):
+        assert len(states) == len(actions)
+        batches = [[states[i], actions[i], states[i]] for i in range(len(states))]
+        states, actions, _ = self.dataset.collate_fn(batches)
+        
+        self.model.eval()
+        preds = self.model(states, actions)
+        preds = preds.argmax(dim=1).tolist()
+        return preds
+
     # def evaluate(self):
     #     self.model.eval()
     #     acc = Accuracy()
@@ -75,11 +85,11 @@ if __name__ == '__main__':
             self.model = 'MLP'
             self.n_states = 2
             self.n_actions = 2
-            self.d_hidden = 10
+            self.d_hidden = 100
             self.n_layers = 1
             self.dropout = 0.5
             self.lr = 1e-4
-            self.n_epochs = 10000
+            self.n_epochs = 100
             self.batch_size = 2
             self.log_every = 10
             self.save_every = 0
@@ -93,3 +103,4 @@ if __name__ == '__main__':
     env = VirtualEnv(args)
     env.add_data(data)
     env.train()
+    print(env.predict(states, actions))
