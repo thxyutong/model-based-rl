@@ -1,7 +1,7 @@
 import torch
 from torch import nn
 
-from modules import TraditionalLayer
+from virtual.modules import TraditionalLayer
 
 class MLP(nn.Module):
     def __init__(self, args):

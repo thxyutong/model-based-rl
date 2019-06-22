@@ -2,8 +2,8 @@ import torch
 import torch.nn.functional as F
 from torch.utils.data import DataLoader
 
-import models
-from utils import Dataset, Accuracy
+import virtual.models as models
+from virtual.utils import Dataset, Accuracy
 
 class VirtualEnv:
 
@@ -44,12 +44,12 @@ class VirtualEnv:
                 step += 1
 
                 self.acc.count(preds, states_)
-                if args.log_every > 0 and step % args.log_every == 0:
+                if self.args.log_every > 0 and step % self.args.log_every == 0:
                     print('Epoch %i step %i: train acc %f, loss %f' % (
                         epoch, step, self.acc.report(reset=True), loss.item()))
-                if args.save_every > 0 and step % args.save_every == 0:
+                if self.args.save_every > 0 and step % self.args.save_every == 0:
                     torch.save(self.model.state_dict(),
-                        os.path.join(args.run_dir, 'params_%i.model' % step))
+                        os.path.join(self.args.run_dir, 'params_%i.model' % step))
                 # if args.eval_every > 0 and step % args.eval_every == 0:
                 #     self.evaluate()
 
@@ -60,7 +60,8 @@ class VirtualEnv:
         
         self.model.eval()
         preds = self.model(states, actions)
-        preds = preds.argmax(dim=1).tolist()
+        print(preds)
+        preds = preds.tolist()
         return preds
 
     # def evaluate(self):
@@ -83,8 +84,8 @@ if __name__ == '__main__':
     class Argument():
         def __init__(self):
             self.model = 'MLP'
-            self.n_states = 2
-            self.n_actions = 2
+            self.n_states = 4
+            self.n_actions = 4
             self.d_hidden = 100
             self.n_layers = 1
             self.dropout = 0.5
@@ -97,7 +98,7 @@ if __name__ == '__main__':
     
     states = [0, 0, 1, 1]
     actions = [0, 1, 0, 1]
-    states_ = [0, 1, 1, 0]
+    states_ = [0, 2, 3, 0]
     data = [states, actions, states_]
 
     env = VirtualEnv(args)
