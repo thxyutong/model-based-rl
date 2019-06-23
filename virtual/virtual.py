@@ -60,7 +60,7 @@ class VirtualEnv:
         
         self.model.eval()
         preds = self.model(states, actions)
-        print(preds)
+        #print(preds)
         preds = preds.tolist()
         return preds
 

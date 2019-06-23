@@ -1,0 +1,93 @@
+Epoch 0 step 10: train acc 0.000000, loss 2.996429
+Epoch 0 step 20: train acc 0.100000, loss 2.997710
+Epoch 0 step 30: train acc 0.050000, loss 2.994592
+Epoch 0 step 40: train acc 0.000000, loss 2.996858
+Epoch 0 step 50: train acc 0.050000, loss 2.996439
+Epoch 0 step 60: train acc 0.050000, loss 3.000842
+Epoch 0 step 70: train acc 0.100000, loss 2.991843
+Epoch 0 step 80: train acc 0.050000, loss 2.999031
+Epoch 0 step 90: train acc 0.100000, loss 2.996379
+Epoch 0 step 100: train acc 0.050000, loss 2.994186
+Epoch 1 step 110: train acc 0.052632, loss 2.997740
+Epoch 1 step 120: train acc 0.100000, loss 2.993778
+Epoch 1 step 130: train acc 0.150000, loss 2.999030
+Epoch 1 step 140: train acc 0.100000, loss 2.998915
+Epoch 1 step 150: train acc 0.000000, loss 2.998689
+Epoch 1 step 160: train acc 0.100000, loss 2.998499
+Epoch 1 step 170: train acc 0.100000, loss 2.989633
+Epoch 1 step 180: train acc 0.150000, loss 2.998436
+Epoch 1 step 190: train acc 0.000000, loss 2.995763
+Epoch 1 step 200: train acc 0.050000, loss 2.997761
+
+
+
+ cycle  0
+Epoch 0 step 10: train acc 0.050000, loss 2.997460
+Epoch 0 step 20: train acc 0.100000, loss 2.996318
+Epoch 0 step 30: train acc 0.000000, loss 2.997293
+Epoch 0 step 40: train acc 0.050000, loss 2.996704
+Epoch 0 step 50: train acc 0.100000, loss 2.995765
+Epoch 0 step 60: train acc 0.050000, loss 2.994270
+Epoch 0 step 70: train acc 0.050000, loss 2.995502
+Epoch 0 step 80: train acc 0.100000, loss 2.996923
+Epoch 1 step 90: train acc 0.100000, loss 2.994699
+Epoch 1 step 100: train acc 0.000000, loss 2.994123
+Epoch 1 step 110: train acc 0.050000, loss 2.993114
+Epoch 1 step 120: train acc 0.000000, loss 2.997030
+Epoch 1 step 130: train acc 0.200000, loss 2.997598
+Epoch 1 step 140: train acc 0.100000, loss 2.993591
+Epoch 1 step 150: train acc 0.000000, loss 2.997994
+Epoch 1 step 160: train acc 0.000000, loss 2.996708
+<tf.Variable 'deepq/eps:0' shape=() dtype=float32_ref>
+<tf.Variable 'deepq/q_func/mlp_fc0/w:0' shape=(20, 64) dtype=float32_ref>
+<tf.Variable 'deepq/q_func/mlp_fc0/b:0' shape=(64,) dtype=float32_ref>
+<tf.Variable 'deepq/q_func/mlp_fc1/w:0' shape=(64, 64) dtype=float32_ref>
+<tf.Variable 'deepq/q_func/mlp_fc1/b:0' shape=(64,) dtype=float32_ref>
+<tf.Variable 'deepq/q_func/action_value/fully_connected/weights:0' shape=(64, 256) dtype=float32_ref>
+<tf.Variable 'deepq/q_func/action_value/fully_connected/biases:0' shape=(256,) dtype=float32_ref>
+<tf.Variable 'deepq/q_func/action_value/fully_connected_1/weights:0' shape=(256, 20) dtype=float32_ref>
+<tf.Variable 'deepq/q_func/action_value/fully_connected_1/biases:0' shape=(20,) dtype=float32_ref>
+<tf.Variable 'deepq/q_func/state_value/fully_connected/weights:0' shape=(64, 256) dtype=float32_ref>
+<tf.Variable 'deepq/q_func/state_value/fully_connected/biases:0' shape=(256,) dtype=float32_ref>
+<tf.Variable 'deepq/q_func/state_value/fully_connected_1/weights:0' shape=(256, 1) dtype=float32_ref>
+<tf.Variable 'deepq/q_func/state_value/fully_connected_1/biases:0' shape=(1,) dtype=float32_ref>
+<tf.Variable 'deepq/target_q_func/mlp_fc0/w:0' shape=(20, 64) dtype=float32_ref>
+<tf.Variable 'deepq/target_q_func/mlp_fc0/b:0' shape=(64,) dtype=float32_ref>
+<tf.Variable 'deepq/target_q_func/mlp_fc1/w:0' shape=(64, 64) dtype=float32_ref>
+<tf.Variable 'deepq/target_q_func/mlp_fc1/b:0' shape=(64,) dtype=float32_ref>
+<tf.Variable 'deepq/target_q_func/action_value/fully_connected/weights:0' shape=(64, 256) dtype=float32_ref>
+<tf.Variable 'deepq/target_q_func/action_value/fully_connected/biases:0' shape=(256,) dtype=float32_ref>
+<tf.Variable 'deepq/target_q_func/action_value/fully_connected_1/weights:0' shape=(256, 20) dtype=float32_ref>
+<tf.Variable 'deepq/target_q_func/action_value/fully_connected_1/biases:0' shape=(20,) dtype=float32_ref>
+<tf.Variable 'deepq/target_q_func/state_value/fully_connected/weights:0' shape=(64, 256) dtype=float32_ref>
+<tf.Variable 'deepq/target_q_func/state_value/fully_connected/biases:0' shape=(256,) dtype=float32_ref>
+<tf.Variable 'deepq/target_q_func/state_value/fully_connected_1/weights:0' shape=(256, 1) dtype=float32_ref>
+<tf.Variable 'deepq/target_q_func/state_value/fully_connected_1/biases:0' shape=(1,) dtype=float32_ref>
+<tf.Variable 'deepq_1/beta1_power:0' shape=() dtype=float32_ref>
+<tf.Variable 'deepq_1/beta2_power:0' shape=() dtype=float32_ref>
+<tf.Variable 'deepq/deepq/q_func/mlp_fc0/w/Adam:0' shape=(20, 64) dtype=float32_ref>
+<tf.Variable 'deepq/deepq/q_func/mlp_fc0/w/Adam_1:0' shape=(20, 64) dtype=float32_ref>
+<tf.Variable 'deepq/deepq/q_func/mlp_fc0/b/Adam:0' shape=(64,) dtype=float32_ref>
+<tf.Variable 'deepq/deepq/q_func/mlp_fc0/b/Adam_1:0' shape=(64,) dtype=float32_ref>
+<tf.Variable 'deepq/deepq/q_func/mlp_fc1/w/Adam:0' shape=(64, 64) dtype=float32_ref>
+<tf.Variable 'deepq/deepq/q_func/mlp_fc1/w/Adam_1:0' shape=(64, 64) dtype=float32_ref>
+<tf.Variable 'deepq/deepq/q_func/mlp_fc1/b/Adam:0' shape=(64,) dtype=float32_ref>
+<tf.Variable 'deepq/deepq/q_func/mlp_fc1/b/Adam_1:0' shape=(64,) dtype=float32_ref>
+<tf.Variable 'deepq/deepq/q_func/action_value/fully_connected/weights/Adam:0' shape=(64, 256) dtype=float32_ref>
+<tf.Variable 'deepq/deepq/q_func/action_value/fully_connected/weights/Adam_1:0' shape=(64, 256) dtype=float32_ref>
+<tf.Variable 'deepq/deepq/q_func/action_value/fully_connected/biases/Adam:0' shape=(256,) dtype=float32_ref>
+<tf.Variable 'deepq/deepq/q_func/action_value/fully_connected/biases/Adam_1:0' shape=(256,) dtype=float32_ref>
+<tf.Variable 'deepq/deepq/q_func/action_value/fully_connected_1/weights/Adam:0' shape=(256, 20) dtype=float32_ref>
+<tf.Variable 'deepq/deepq/q_func/action_value/fully_connected_1/weights/Adam_1:0' shape=(256, 20) dtype=float32_ref>
+<tf.Variable 'deepq/deepq/q_func/action_value/fully_connected_1/biases/Adam:0' shape=(20,) dtype=float32_ref>
+<tf.Variable 'deepq/deepq/q_func/action_value/fully_connected_1/biases/Adam_1:0' shape=(20,) dtype=float32_ref>
+<tf.Variable 'deepq/deepq/q_func/state_value/fully_connected/weights/Adam:0' shape=(64, 256) dtype=float32_ref>
+<tf.Variable 'deepq/deepq/q_func/state_value/fully_connected/weights/Adam_1:0' shape=(64, 256) dtype=float32_ref>
+<tf.Variable 'deepq/deepq/q_func/state_value/fully_connected/biases/Adam:0' shape=(256,) dtype=float32_ref>
+<tf.Variable 'deepq/deepq/q_func/state_value/fully_connected/biases/Adam_1:0' shape=(256,) dtype=float32_ref>
+<tf.Variable 'deepq/deepq/q_func/state_value/fully_connected_1/weights/Adam:0' shape=(256, 1) dtype=float32_ref>
+<tf.Variable 'deepq/deepq/q_func/state_value/fully_connected_1/weights/Adam_1:0' shape=(256, 1) dtype=float32_ref>
+<tf.Variable 'deepq/deepq/q_func/state_value/fully_connected_1/biases/Adam:0' shape=(1,) dtype=float32_ref>
+<tf.Variable 'deepq/deepq/q_func/state_value/fully_connected_1/biases/Adam_1:0' shape=(1,) dtype=float32_ref>
+<tf.Variable 'deepq_3/beta1_power:0' shape=() dtype=float32_ref>
+<tf.Variable 'deepq_3/beta2_power:0' shape=() dtype=float32_ref>

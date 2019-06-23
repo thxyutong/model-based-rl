@@ -1,6 +1,8 @@
 import gym
 from baselines import deepq
 import virtual
+import numpy as np
+import tensorflow as tf
 
 class Argument():
     def __init__(self, env):
@@ -25,49 +27,68 @@ def get_action(env, obs, agent):
 	if agent == None:
 		return env.action_space.sample()
 	else:
-		return agent(obs)
+		#print('\n\ntype of agent is \n', type(agent), '\n\n')
+		#print('observation is ', obs)
+		#obs = [obs]
+		#print(np.shape(np.array([obs])))
+		return agent(np.array([obs]))[0]
+		#assert False
+		
+if __name__ == '__main__':	
+	env = gym.make('RLEnv-v0', nS = 20, nA = 20, gamma = 0.8)
+	agent = None
+	nsamples = 100
+	ntrials = 10
+	for _ in range(3):     #times of cycles
+		states = []
+		actions = []
+		_states = []
+		for __ in range(ntrials):
+			obs = env.reset()
+			for ___ in range(nsamples):
+				#print(_, __, ___)
+				action = get_action(env, obs, agent)
+				#if _ > 0:
+				#	print('pair is (', obs, ', ', action, ') ', type(action))
+				#	print(np.shape(action))
+				#	print(action.tolist()[0])
+				nobs, reward, stop, info = env.step(action)
+				states.append(obs)
+				actions.append(action)
+				_states.append(nobs)
+				if stop:
+					break
+					
+		args = Argument(env)
+		data = [states, actions, _states]
+		model = virtual.VirtualEnv(args)
+		model.add_data(data)
+		model.train()
 
-env = gym.make('RLEnv-v0', nS = 20, nA = 20, gamma = 0.8)
-agent = None
-nsamples = 100
-ntrials = 10
-for _ in range(2):     #times of cycles
-	states = []
-	actions = []
-	_states = []
-	for __ in range(ntrials):
-		obs = env.reset()
-		for ___ in range(nsamples):
-			print(_, __, ___)
-			action = get_action(env, obs, agent)
-			nobs, reward, stop, info = env.step(action)
-			states.append(obs)
-			actions.append(action)
-			_states.append(nobs)
-			if stop:
-				break
-				
-	args = Argument(env)
-	data = [states, actions, _states]
-	model = virtual.VirtualEnv(args)
-	model.add_data(data)
-	model.train()
-
-	my_env = gym.make('RLImitateEnv-v0', real_env = env, model = model)
-	my_env.reset()
-	
-	agent = deepq.learn(
-		my_env,
-		network='mlp',
-		lr=1e-3,
-		total_timesteps=10,#00000,
-		buffer_size=50000,
-		exploration_fraction=0.1,
-		exploration_final_eps=0.02,
-		print_freq=10,
-		callback=callback,
-		load_path = 'agent-mle-v0-' + str(_ - 1) + '.pkl' if _ > 0 else None
-	)
-	#print(_, 'agent-mle-v0-' + str(_) + '.pkl')
-	agent.save('agent-mle-v0-' + str(_) + '.pkl')
-	print('lfakjsdflaks=================adslkjfasdjldjs')
+		my_env = gym.make('RLImitateEnv-v0', real_env = env, model = model)
+		my_env.reset()
+		
+		if _ > 0:
+			#list1 = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES)
+			tf.get_variable_scope().reuse_variables()
+			#list2 = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES)
+			#print(list1, '\n')
+			#print(list2)
+			
+			
+		agent = deepq.learn(
+			my_env,
+			network='mlp',
+			lr=1e-3,
+			total_timesteps=10,#1000000,
+			buffer_size=50000,
+			exploration_fraction=0.1,
+			exploration_final_eps=0.02,
+			print_freq=10,
+			callback=callback,
+			load_path = 'agent-mle-v0-' + str(_ - 1) + '.pkl' if _ > 0 else None
+		)
+		#print(_, 'agent-mle-v0-' + str(_) + '.pkl')
+		#assert(_==0)
+		agent.save('agent-mle-v0-' + str(_) + '.pkl')
+		print('\n\n\n cycle ', _)
