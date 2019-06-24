@@ -39,7 +39,7 @@ if __name__ == '__main__':
 	agent = None
 	nsamples = 100
 	ntrials = 10
-	for _ in range(3):     #times of cycles
+	for _ in range(1):     #times of cycles
 		states = []
 		actions = []
 		_states = []
@@ -75,18 +75,18 @@ if __name__ == '__main__':
 			#print(list1, '\n')
 			#print(list2)
 			
-			
+		print("\n\n==================\n\n")
 		agent = deepq.learn(
 			my_env,
 			network='mlp',
 			lr=1e-3,
-			total_timesteps=10,#1000000,
+			total_timesteps=100,
 			buffer_size=50000,
 			exploration_fraction=0.1,
 			exploration_final_eps=0.02,
 			print_freq=10,
 			callback=callback,
-			load_path = 'agent-mle-v0-' + str(_ - 1) + '.pkl' if _ > 0 else None
+			load_path = None#'agent-mle-v0-' + str(_ - 1) + '.pkl' if _ > 0 else None
 		)
 		#print(_, 'agent-mle-v0-' + str(_) + '.pkl')
 		#assert(_==0)
