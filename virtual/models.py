@@ -7,8 +7,8 @@ class MLP(nn.Module):
     def __init__(self, args):
         super().__init__()
         self.n_classes = args.n_states
-        self.state_embedding = nn.Linear(args.n_states, args.d_hidden)
-        self.action_embedding = nn.Linear(args.n_actions, args.d_hidden)
+        self.state_embedding = nn.Embedding(args.n_states, args.d_hidden)
+        self.action_embedding = nn.Embedding(args.n_actions, args.d_hidden)
         self.output = nn.Sequential(
           *[TraditionalLayer(
                 args.d_hidden * 2,
@@ -20,8 +20,8 @@ class MLP(nn.Module):
 
     def forward(self, states, actions):
         '''
-        @param states:  batch_size x n_states
-        @param actions: batch_size x n_actions
+        @param states:  batch_size x 1
+        @param actions: batch_size x 1
         @return:        batch_size x n_classes(n_states)
         '''
         states = self.state_embedding(states)    # batch_size x d_hidden

@@ -27,18 +27,11 @@ class Dataset(data.Dataset):
     def collate_fn(self, batch):
         states, actions, states_ = [], [], []
         for state, action, state_ in batch:
-            # state
-            x = torch.zeros(self.n_states)
-            x[state] = 1
-            states.append(x)
-            # action
-            x = torch.zeros(self.n_actions)
-            x[action] = 1
-            actions.append(x)
-            # state_ (label)
+            states.append(state)
+            actions.append(action)
             states_.append(state_)
-        states = torch.stack(states, dim=0)
-        actions = torch.stack(actions, dim=0)
+        states = torch.tensor(states, dtype=torch.long)
+        actions = torch.tensor(actions, dtype=torch.long)
         states_ = torch.tensor(states_, dtype=torch.long)
         return states, actions, states_
 
@@ -63,3 +56,46 @@ class Accuracy():
 
     def reset(self):
         self.total = self.correct = 0
+        
+class Distance():
+    def __init__(self, args):
+        self.n_states = args.n_states
+        self.pred_count = dict()
+        self.real_count = dict()
+        
+    def count(self, states, actions, preds, states_):
+        assert states.shape[0] == actions.shape[0]
+        assert states.shape[0] == states_.shape[0]
+        assert states.shape[0] == preds.shape[0]
+        
+        for i in range(states.shape[0]):
+            state = states[i]
+            action = actions[i]
+            state_ = states_[i]
+            pair = (state.item(), action.item())
+            
+            if pair not in self.pred_count:
+                self.pred_count[pair] = torch.zeros(self.n_states)
+                self.real_count[pair] = torch.zeros(self.n_states)
+                
+            self.pred_count[pair] += preds[i]
+            self.real_count[pair][state_] += 1
+            
+    def report(self, reset=False):
+        cnt = 0
+        dist = 0.0
+        for key in self.pred_count.keys():
+            pred = self.pred_count[key]
+            real = self.real_count[key]
+            cur_cnt = int(real.sum().item())
+            cnt += cur_cnt
+            pred /= cur_cnt
+            real /= cur_cnt
+            dist += 0.5 * (real - pred).abs().sum()
+        res = dist / cnt
+        if (reset): self.reset()
+        return res
+        
+    def reset(self):
+        self.pred_count = dict()
+        self.real_count = dict()

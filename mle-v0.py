@@ -5,18 +5,19 @@ import numpy as np
 import tensorflow as tf
 
 class Argument():
-    def __init__(self, env):
-        self.model = 'MLP'
-        self.n_states = env.nS
-        self.n_actions = env.nA
-        self.d_hidden = 100
-        self.n_layers = 1
-        self.dropout = 0.5
-        self.lr = 1e-4
-        self.n_epochs = 2
-        self.batch_size = 2
-        self.log_every = 10
-        self.save_every = 0
+	def __init__(self, env):
+		self.model = 'MLP'
+		self.n_states = 20
+		self.n_actions = 20
+		self.d_hidden = 500
+		self.n_layers = 1
+		self.dropout = 0.5
+		self.lr = 1e-4
+		self.n_epochs = 1000
+		self.batch_size = 32
+		self.log_every = 10
+		self.save_every = 0
+		self.eval_every = 10
        
 def callback(lcl, _glb):
     # stop training if reward exceeds 199
@@ -35,11 +36,15 @@ def get_action(env, obs, agent):
 		#assert False
 		
 if __name__ == '__main__':	
-	env = gym.make('RLEnv-v0', nS = 20, nA = 20, gamma = 0.8)
+	env = gym.make('RLEnv-v0', nS = 20, nA = 20, gamma = 0.9, terminal_steps = 200)
 	agent = None
-	nsamples = 100
-	ntrials = 10
-	for _ in range(1):     #times of cycles
+	nsamples = 200
+	ntrials = 200
+	
+	args = Argument(env)
+	model = virtual.VirtualEnv(args)
+	for _ in range(10):     #times of cycles
+		print("\n\n===  Cycle ", _, "\n\n")
 		states = []
 		actions = []
 		_states = []
@@ -58,10 +63,7 @@ if __name__ == '__main__':
 				_states.append(nobs)
 				if stop:
 					break
-					
-		args = Argument(env)
 		data = [states, actions, _states]
-		model = virtual.VirtualEnv(args)
 		model.add_data(data)
 		model.train()
 
@@ -69,26 +71,23 @@ if __name__ == '__main__':
 		my_env.reset()
 		
 		if _ > 0:
-			#list1 = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES)
 			tf.get_variable_scope().reuse_variables()
-			#list2 = tf.get_collection(tf.GraphKeys.GLOBAL_VARIABLES)
-			#print(list1, '\n')
-			#print(list2)
 			
-		print("\n\n==================\n\n")
 		agent = deepq.learn(
 			my_env,
 			network='mlp',
 			lr=1e-3,
-			total_timesteps=100,
+			total_timesteps=4000,
 			buffer_size=50000,
 			exploration_fraction=0.1,
 			exploration_final_eps=0.02,
+			train_freq = 10,
 			print_freq=10,
 			callback=callback,
-			load_path = None#'agent-mle-v0-' + str(_ - 1) + '.pkl' if _ > 0 else None
+			load_path = 'mle-models/agent-mle-v0-' + str(_ - 1) + '.pkl' if _ > 0 else None
 		)
 		#print(_, 'agent-mle-v0-' + str(_) + '.pkl')
 		#assert(_==0)
-		agent.save('agent-mle-v0-' + str(_) + '.pkl')
-		print('\n\n\n cycle ', _)
+		agent.save('mle-models/agent-mle-v0-' + str(_) + '.pkl')
+		
+		print("End Cycle")

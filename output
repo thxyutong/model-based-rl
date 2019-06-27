@@ -1,0 +1,303 @@
+
+Rewards of real env is  [9.570900022184764, 9.618414265366884, 9.525950669986141, 9.598398434654687, 9.593067058277402, 9.611637037434562, 9.551887066048847, 9.613330187006413, 9.616303776546197, 9.587411106399294, 9.632312300160878, 9.621324272182646, 9.57805104936176, 9.628649731960122, 9.534812143979549, 9.633208082631452, 9.584529572203856, 9.477784112776071, 9.619232125682755, 9.553813566330886]
+Average reward is  9.587550829058758
+
+
+===  Cycle  0 
+
+
+size of dataset is  1000
+Epoch 0 step 10: train acc 0.053125, loss 2.995776
+Epoch 0 step 20: train acc 0.062500, loss 2.996576
+Epoch 0 step 30: train acc 0.050000, loss 2.994875
+Epoch 1 step 40: train acc 0.060811, loss 2.996019
+Epoch 1 step 50: train acc 0.050000, loss 2.994450
+Epoch 1 step 60: train acc 0.062500, loss 2.995635
+Epoch 2 step 70: train acc 0.050676, loss 2.996082
+Epoch 2 step 80: train acc 0.050000, loss 2.995240
+Epoch 2 step 90: train acc 0.046875, loss 2.996028
+Epoch 3 step 100: train acc 0.060811, loss 2.994688
+Epoch 3 step 110: train acc 0.034375, loss 2.996519
+Epoch 3 step 120: train acc 0.093750, loss 2.995457
+
+Rewards of imitation is  [9.553466885655551, 9.59887021283858, 9.508439300975539, 9.58740280675206, 9.57801809841404, 9.59070680685997, 9.538418762693015, 9.58744598695883, 9.60737749736303, 9.576195824165561, 9.609172125498457, 9.599156890244677, 9.5605638245866, 9.611658285598509, 9.507713356009031, 9.612088631650217, 9.56544755362587, 9.465928830716678, 9.607908351800655, 9.543551413625185]
+Average reward is  9.570476572301605
+Logging to /tmp/openai-2019-06-27-15-27-18-321429
+--------------------------------------
+| % time spent exploring  | 2        |
+| episodes                | 10       |
+| mean 100 episode reward | 183      |
+| steps                   | 1.8e+03  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 2        |
+| episodes                | 20       |
+| mean 100 episode reward | 187      |
+| steps                   | 3.8e+03  |
+--------------------------------------
+End Cycle
+
+
+===  Cycle  1 
+
+
+size of dataset is  2000
+Epoch 0 step 10: train acc 0.050725, loss 2.995179
+Epoch 0 step 20: train acc 0.093750, loss 2.996061
+Epoch 0 step 30: train acc 0.053125, loss 2.994883
+Epoch 0 step 40: train acc 0.071875, loss 2.996170
+Epoch 0 step 50: train acc 0.065625, loss 2.994851
+Epoch 0 step 60: train acc 0.046875, loss 2.995453
+Epoch 1 step 70: train acc 0.042763, loss 2.995413
+Epoch 1 step 80: train acc 0.053125, loss 2.995223
+Epoch 1 step 90: train acc 0.043750, loss 2.995108
+Epoch 1 step 100: train acc 0.046875, loss 2.995088
+Epoch 1 step 110: train acc 0.050000, loss 2.996785
+Epoch 1 step 120: train acc 0.059375, loss 2.995715
+Epoch 2 step 130: train acc 0.059211, loss 2.995432
+Epoch 2 step 140: train acc 0.056250, loss 2.995657
+Epoch 2 step 150: train acc 0.056250, loss 2.994438
+Epoch 2 step 160: train acc 0.046875, loss 2.995307
+Epoch 2 step 170: train acc 0.059375, loss 2.996307
+Epoch 2 step 180: train acc 0.053125, loss 2.993607
+Epoch 3 step 190: train acc 0.052632, loss 2.995945
+Epoch 3 step 200: train acc 0.059375, loss 2.995724
+Epoch 3 step 210: train acc 0.053125, loss 2.995445
+Epoch 3 step 220: train acc 0.090625, loss 2.994740
+Epoch 3 step 230: train acc 0.078125, loss 2.995024
+Epoch 3 step 240: train acc 0.050000, loss 2.995963
+Epoch 3 step 250: train acc 0.090625, loss 2.995580
+
+Rewards of imitation is  [9.547218219044455, 9.59256065798973, 9.502048042764722, 9.580925825869809, 9.571677621258585, 9.584211361189318, 9.531850999179271, 9.580742660449197, 9.601089601759258, 9.569976111577986, 9.602612037196742, 9.592780466016396, 9.554145135573414, 9.605296699985162, 9.501277911154402, 9.605869927165077, 9.55904387723435, 9.459683240919043, 9.601647755943045, 9.537232936141626]
+Average reward is  9.564094554420581
+Loaded model from mle-models/agent-mle-v0-0.pkl
+--------------------------------------
+| % time spent exploring  | 2        |
+| episodes                | 10       |
+| mean 100 episode reward | 182      |
+| steps                   | 1.8e+03  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 2        |
+| episodes                | 20       |
+| mean 100 episode reward | 187      |
+| steps                   | 3.8e+03  |
+--------------------------------------
+End Cycle
+
+
+===  Cycle  2 
+
+
+size of dataset is  3000
+Epoch 0 step 10: train acc 0.059783, loss 2.994730
+Epoch 0 step 20: train acc 0.071875, loss 2.994224
+Epoch 0 step 30: train acc 0.090625, loss 2.994530
+Epoch 0 step 40: train acc 0.068750, loss 2.995017
+Epoch 0 step 50: train acc 0.056250, loss 2.996367
+Epoch 0 step 60: train acc 0.078125, loss 2.994296
+Epoch 0 step 70: train acc 0.053125, loss 2.995872
+Epoch 0 step 80: train acc 0.065625, loss 2.996143
+Epoch 0 step 90: train acc 0.059375, loss 2.994817
+Epoch 1 step 100: train acc 0.057692, loss 2.995012
+Epoch 1 step 110: train acc 0.053125, loss 2.993640
+Epoch 1 step 120: train acc 0.096875, loss 2.997556
+Epoch 1 step 130: train acc 0.062500, loss 2.995528
+Epoch 1 step 140: train acc 0.056250, loss 2.995737
+Epoch 1 step 150: train acc 0.059375, loss 2.993534
+Epoch 1 step 160: train acc 0.084375, loss 2.993890
+Epoch 1 step 170: train acc 0.046875, loss 2.996738
+Epoch 1 step 180: train acc 0.062500, loss 2.994641
+Epoch 2 step 190: train acc 0.054487, loss 2.992346
+Epoch 2 step 200: train acc 0.053125, loss 2.993428
+Epoch 2 step 210: train acc 0.053125, loss 2.994203
+Epoch 2 step 220: train acc 0.084375, loss 2.993299
+Epoch 2 step 230: train acc 0.075000, loss 2.994687
+Epoch 2 step 240: train acc 0.062500, loss 2.994599
+Epoch 2 step 250: train acc 0.053125, loss 2.995269
+Epoch 2 step 260: train acc 0.056250, loss 2.993881
+Epoch 2 step 270: train acc 0.081250, loss 2.995236
+Epoch 2 step 280: train acc 0.065625, loss 2.995082
+Epoch 3 step 290: train acc 0.067308, loss 2.990810
+Epoch 3 step 300: train acc 0.078125, loss 2.993442
+Epoch 3 step 310: train acc 0.056250, loss 2.993985
+Epoch 3 step 320: train acc 0.068750, loss 2.992302
+Epoch 3 step 330: train acc 0.081250, loss 2.993839
+Epoch 3 step 340: train acc 0.050000, loss 2.994058
+Epoch 3 step 350: train acc 0.065625, loss 2.992288
+Epoch 3 step 360: train acc 0.043750, loss 2.994753
+Epoch 3 step 370: train acc 0.043750, loss 2.993801
+
+Rewards of imitation is  [9.539003407916686, 9.58415374373534, 9.493366939612425, 9.572420462030582, 9.563382109010409, 9.57581264651353, 9.523080409228614, 9.572105663798109, 9.592926299318158, 9.561811959772392, 9.594349811054537, 9.584517817835035, 9.545784664581973, 9.597072311149738, 9.492745747117512, 9.597754719428915, 9.550684588715301, 9.451405196640719, 9.593508148466157, 9.528977154843385]
+Average reward is  9.555743190038475
+Loaded model from mle-models/agent-mle-v0-1.pkl
+--------------------------------------
+| % time spent exploring  | 2        |
+| episodes                | 10       |
+| mean 100 episode reward | 182      |
+| steps                   | 1.8e+03  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 2        |
+| episodes                | 20       |
+| mean 100 episode reward | 187      |
+| steps                   | 3.8e+03  |
+--------------------------------------
+End Cycle
+
+
+===  Cycle  3 
+
+
+size of dataset is  4000
+Epoch 0 step 10: train acc 0.057540, loss 2.994850
+Epoch 0 step 20: train acc 0.059375, loss 2.993553
+Epoch 0 step 30: train acc 0.065625, loss 2.990192
+Epoch 0 step 40: train acc 0.056250, loss 2.996429
+Epoch 0 step 50: train acc 0.053125, loss 2.994800
+Epoch 0 step 60: train acc 0.056250, loss 2.994552
+Epoch 0 step 70: train acc 0.062500, loss 2.996049
+Epoch 0 step 80: train acc 0.075000, loss 2.994635
+Epoch 0 step 90: train acc 0.059375, loss 2.996199
+Epoch 0 step 100: train acc 0.046875, loss 2.995727
+Epoch 0 step 110: train acc 0.059375, loss 2.996677
+Epoch 0 step 120: train acc 0.046875, loss 2.993927
+Epoch 1 step 130: train acc 0.053125, loss 2.992158
+Epoch 1 step 140: train acc 0.068750, loss 2.991380
+Epoch 1 step 150: train acc 0.062500, loss 2.996430
+Epoch 1 step 160: train acc 0.056250, loss 2.995053
+Epoch 1 step 170: train acc 0.050000, loss 2.991736
+Epoch 1 step 180: train acc 0.043750, loss 2.996394
+Epoch 1 step 190: train acc 0.062500, loss 2.994139
+Epoch 1 step 200: train acc 0.084375, loss 2.993368
+Epoch 1 step 210: train acc 0.090625, loss 2.995744
+Epoch 1 step 220: train acc 0.068750, loss 2.992877
+Epoch 1 step 230: train acc 0.040625, loss 2.992424
+Epoch 1 step 240: train acc 0.065625, loss 2.996948
+Epoch 1 step 250: train acc 0.050000, loss 2.992970
+Epoch 2 step 260: train acc 0.043750, loss 2.994597
+Epoch 2 step 270: train acc 0.078125, loss 2.992020
+Epoch 2 step 280: train acc 0.087500, loss 2.994009
+Epoch 2 step 290: train acc 0.056250, loss 2.995655
+Epoch 2 step 300: train acc 0.093750, loss 2.993940
+Epoch 2 step 310: train acc 0.075000, loss 2.994074
+Epoch 2 step 320: train acc 0.050000, loss 2.993938
+Epoch 2 step 330: train acc 0.062500, loss 2.996006
+Epoch 2 step 340: train acc 0.084375, loss 2.993518
+Epoch 2 step 350: train acc 0.050000, loss 2.992907
+Epoch 2 step 360: train acc 0.062500, loss 2.992133
+Epoch 2 step 370: train acc 0.059375, loss 2.992148
+Epoch 3 step 380: train acc 0.056250, loss 2.992450
+Epoch 3 step 390: train acc 0.046875, loss 2.994965
+Epoch 3 step 400: train acc 0.071875, loss 2.995449
+Epoch 3 step 410: train acc 0.065625, loss 2.993506
+Epoch 3 step 420: train acc 0.090625, loss 2.991796
+Epoch 3 step 430: train acc 0.065625, loss 2.999433
+Epoch 3 step 440: train acc 0.084375, loss 2.990961
+Epoch 3 step 450: train acc 0.071875, loss 2.993186
+Epoch 3 step 460: train acc 0.071875, loss 2.993819
+Epoch 3 step 470: train acc 0.056250, loss 2.994146
+Epoch 3 step 480: train acc 0.046875, loss 2.995924
+Epoch 3 step 490: train acc 0.078125, loss 2.992576
+Epoch 3 step 500: train acc 0.050000, loss 2.998426
+
+Rewards of imitation is  [9.51861056433127, 9.563273315199249, 9.472116222357966, 9.551886697270897, 9.543150284804733, 9.555277592450746, 9.501903822406138, 9.551300397083637, 9.572305549467787, 9.541571635394696, 9.573742728803872, 9.563904818026852, 9.524747323435511, 9.576750471808408, 9.47181194928916, 9.577671152182658, 9.530154743490304, 9.430565899376012, 9.573271696964161, 9.508327468816262]
+Average reward is  9.535117216648015
+Loaded model from mle-models/agent-mle-v0-2.pkl
+--------------------------------------
+| % time spent exploring  | 2        |
+| episodes                | 10       |
+| mean 100 episode reward | 185      |
+| steps                   | 1.8e+03  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 2        |
+| episodes                | 20       |
+| mean 100 episode reward | 188      |
+| steps                   | 3.8e+03  |
+--------------------------------------
+End Cycle
+
+
+===  Cycle  4 
+
+
+size of dataset is  5000
+Epoch 0 step 10: train acc 0.068750, loss 2.996793
+Epoch 0 step 20: train acc 0.050000, loss 2.986158
+Epoch 0 step 30: train acc 0.078125, loss 2.994214
+Epoch 0 step 40: train acc 0.043750, loss 2.999358
+Epoch 0 step 50: train acc 0.068750, loss 2.988453
+Epoch 0 step 60: train acc 0.065625, loss 2.997133
+Epoch 0 step 70: train acc 0.062500, loss 2.995901
+Epoch 0 step 80: train acc 0.081250, loss 2.986858
+Epoch 0 step 90: train acc 0.084375, loss 2.994536
+Epoch 0 step 100: train acc 0.075000, loss 2.990380
+Epoch 0 step 110: train acc 0.087500, loss 2.992334
+Epoch 0 step 120: train acc 0.059375, loss 2.992652
+Epoch 0 step 130: train acc 0.062500, loss 2.985909
+Epoch 0 step 140: train acc 0.071875, loss 2.996145
+Epoch 0 step 150: train acc 0.071875, loss 2.989653
+Epoch 1 step 160: train acc 0.081081, loss 2.998934
+Epoch 1 step 170: train acc 0.059375, loss 2.989506
+Epoch 1 step 180: train acc 0.062500, loss 2.989517
+Epoch 1 step 190: train acc 0.071875, loss 2.994128
+Epoch 1 step 200: train acc 0.059375, loss 2.996948
+Epoch 1 step 210: train acc 0.046875, loss 2.996929
+Epoch 1 step 220: train acc 0.075000, loss 2.991382
+Epoch 1 step 230: train acc 0.071875, loss 2.993950
+Epoch 1 step 240: train acc 0.078125, loss 2.995096
+Epoch 1 step 250: train acc 0.062500, loss 2.988562
+Epoch 1 step 260: train acc 0.043750, loss 2.992450
+Epoch 1 step 270: train acc 0.056250, loss 2.986945
+Epoch 1 step 280: train acc 0.056250, loss 2.992905
+Epoch 1 step 290: train acc 0.059375, loss 3.005571
+Epoch 1 step 300: train acc 0.062500, loss 2.990463
+Epoch 1 step 310: train acc 0.084375, loss 2.979469
+Epoch 2 step 320: train acc 0.043919, loss 2.996520
+Epoch 2 step 330: train acc 0.059375, loss 2.984663
+Epoch 2 step 340: train acc 0.087500, loss 2.983909
+Epoch 2 step 350: train acc 0.056250, loss 2.993476
+Epoch 2 step 360: train acc 0.071875, loss 2.989750
+Epoch 2 step 370: train acc 0.081250, loss 2.989814
+Epoch 2 step 380: train acc 0.062500, loss 2.996909
+Epoch 2 step 390: train acc 0.075000, loss 2.993849
+Epoch 2 step 400: train acc 0.078125, loss 2.998386
+Epoch 2 step 410: train acc 0.062500, loss 2.985017
+Epoch 2 step 420: train acc 0.053125, loss 2.992501
+Epoch 2 step 430: train acc 0.078125, loss 2.985322
+Epoch 2 step 440: train acc 0.056250, loss 2.975436
+Epoch 2 step 450: train acc 0.050000, loss 2.992379
+Epoch 2 step 460: train acc 0.062500, loss 2.999918
+Epoch 2 step 470: train acc 0.071875, loss 2.994472
+Epoch 3 step 480: train acc 0.060811, loss 2.986373
+Epoch 3 step 490: train acc 0.053125, loss 2.974132
+Epoch 3 step 500: train acc 0.040625, loss 2.997860
+Epoch 3 step 510: train acc 0.084375, loss 2.980814
+Epoch 3 step 520: train acc 0.056250, loss 2.980780
+Epoch 3 step 530: train acc 0.068750, loss 2.986784
+Epoch 3 step 540: train acc 0.053125, loss 2.989421
+Epoch 3 step 550: train acc 0.053125, loss 2.993768
+Epoch 3 step 560: train acc 0.056250, loss 2.989331
+Epoch 3 step 570: train acc 0.062500, loss 2.993504
+Epoch 3 step 580: train acc 0.065625, loss 2.996777
+Epoch 3 step 590: train acc 0.071875, loss 2.984093
+Epoch 3 step 600: train acc 0.059375, loss 2.985897
+Epoch 3 step 610: train acc 0.065625, loss 2.993101
+Epoch 3 step 620: train acc 0.068750, loss 2.987303
+
+Rewards of imitation is  [9.49119204294957, 9.534705034439376, 9.442095514854618, 9.52369996204966, 9.516051637086715, 9.527231410936096, 9.473253473283146, 9.523248133739997, 9.543402871216536, 9.513918841315565, 9.545527014703987, 9.535448374245396, 9.494793255571217, 9.549290597108142, 9.44300395238714, 9.550108096728517, 9.502128247855296, 9.401465248079028, 9.545529841751645, 9.480356532340341]
+Average reward is  9.5068225041321
+Loaded model from mle-models/agent-mle-v0-3.pkl
+--------------------------------------
+| % time spent exploring  | 2        |
+| episodes                | 10       |
+| mean 100 episode reward | 183      |
+| steps                   | 1.8e+03  |
+--------------------------------------
+--------------------------------------
+| % time spent exploring  | 2        |
+| episodes                | 20       |
+| mean 100 episode reward | 187      |
+| steps                   | 3.8e+03  |
+--------------------------------------
