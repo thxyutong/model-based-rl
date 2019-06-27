@@ -58,7 +58,8 @@ class Accuracy():
         self.total = self.correct = 0
         
 class Distance():
-    def __init__(self, args):
+    def __init__(self, args, env):
+        self.env = env
         self.n_states = args.n_states
         self.pred_count = dict()
         self.real_count = dict()
@@ -82,17 +83,21 @@ class Distance():
             self.real_count[pair][state_] += 1
             
     def report(self, reset=False):
-        cnt = 0
+        n_iter = 0
         dist = 0.0
         for key in self.pred_count.keys():
             pred = self.pred_count[key]
             real = self.real_count[key]
             cur_cnt = int(real.sum().item())
-            cnt += cur_cnt
+            real = []
+            for s in range(self.n_states):
+                real.append(self.env.trans[key[0]][key[1]][s])
+            real = torch.tensor(real)
+            n_iter += 1
             pred /= cur_cnt
-            real /= cur_cnt
+            #real /= cur_cnt
             dist += 0.5 * (real - pred).abs().sum()
-        res = dist / cnt
+        res = dist / n_iter
         if (reset): self.reset()
         return res
         

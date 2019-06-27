@@ -9,17 +9,18 @@ from virtual.utils import Dataset, Distance
 
 class VirtualEnv:
 
-    def __init__(self, args):
+    def __init__(self, args, env):
         self.args = args
+        self.env = env
         Model = getattr(models, args.model)
 
         # self.acc = Accuracy()
-        self.dist = Distance(args)
+        self.dist = Distance(args, env)
         self.train_set = Dataset(args)
         self.dev_set = Dataset(args)
         # self.dataset = Dataset(args)
         self.model = Model(args)
-        self.optimizer = torch.optim.Adam(
+        self.optimizer = torch.optim.SGD(
             self.model.parameters(), lr=args.lr)
 
     def add_data(self, data, train_fraction=0.7):
@@ -36,7 +37,7 @@ class VirtualEnv:
 
     def train(self):
         step = 0
-        print("size of dataset is ", len(self.train_set))
+        #print("size of dataset is ", len(self.train_set))
         for epoch in range(self.args.n_epochs):
 
             data_loader = DataLoader(
@@ -69,12 +70,13 @@ class VirtualEnv:
                     torch.save(self.model.state_dict(),
                         os.path.join(self.args.run_dir, 'params_%i.model' % step))
                 if self.args.eval_every > 0 and step % self.args.eval_every == 0:
+                    print('Epoch %i step %i: ' % (epoch, step), end='')
                     self.evaluate()
 
     def predict(self, states, actions):
         assert len(states) == len(actions)
         batches = [[states[i], actions[i], states[i]] for i in range(len(states))]
-        states, actions, _ = self.dataset.collate_fn(batches)
+        states, actions, _ = self.dev_set.collate_fn(batches)
         
         self.model.eval()
         preds = self.model(states, actions)
@@ -85,7 +87,7 @@ class VirtualEnv:
     def evaluate(self):
         self.model.eval()
         # acc = Accuracy()
-        dist = Distance(self.args)
+        dist = Distance(self.args, self.env)
         data_loader = DataLoader(
             self.dev_set,
             self.args.batch_size,
@@ -118,9 +120,9 @@ if __name__ == '__main__':
             self.eval_every = 10
     args = Argument()
     
-    states = [0, 0, 1, 1]
-    actions = [0, 1, 0, 1]
-    states_ = [0, 2, 3, 0]
+    states = [0, 0, 1, 1, 0, 0, 1, 1]
+    actions = [0, 1, 0, 1, 0, 1, 0, 1]
+    states_ = [0, 2, 3, 0, 0, 2, 3, 0]
     data = [states, actions, states_]
 
     env = VirtualEnv(args)

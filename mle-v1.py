@@ -45,18 +45,11 @@ if __name__ == '__main__':
 	model = virtual.VirtualEnv(args, env)
 	for _ in range(10):     #times of cycles
 		print("\n\n===  Cycle ", _, "\n\n")
-		states = []
-		actions = []
-		_states = []
+		freq = [[dict() for _ in range(env.nA)] for _ in range(env.nS)]
 		for __ in range(ntrials):
 			obs = env.reset()
 			for ___ in range(nsamples):
-				#print(_, __, ___)
 				action = get_action(env, obs, agent)
-				#if _ > 0:
-				#	print('pair is (', obs, ', ', action, ') ', type(action))
-				#	print(np.shape(action))
-				#	print(action.tolist()[0])
 				nobs, reward, stop, info = env.step(action)
 				states.append(obs)
 				actions.append(action)
