@@ -26,6 +26,7 @@ def callback(lcl, _glb):
 
 def get_action(env, obs, agent):
 	if agent == None:
+		#print(env.action_space.sample())
 		return env.action_space.sample()
 	else:
 		#print('\n\ntype of agent is \n', type(agent), '\n\n')
@@ -38,49 +39,27 @@ def get_action(env, obs, agent):
 if __name__ == '__main__':	
 	env = gym.make('RLEnv-v0', nS = 5, nA = 5, gamma = 0.9, terminal_steps = 200)
 	agent = None
-	nsamples = 20
+	nsamples = 2
 	ntrials = 2000
 	
 	args = Argument(env)
-	model = virtual.VirtualEnv(args, env)
-	for _ in range(10):     #times of cycles
-		print("\n\n===  Cycle ", _, "\n\n")
-		freq = [[dict() for _ in range(env.nA)] for _ in range(env.nS)]
-		for __ in range(ntrials):
-			obs = env.reset()
-			for ___ in range(nsamples):
-				action = get_action(env, obs, agent)
-				nobs, reward, stop, info = env.step(action)
-				states.append(obs)
-				actions.append(action)
-				_states.append(nobs)
-				if stop:
-					break
-		data = [states, actions, _states]
-		model.add_data(data)
-		model.train()
-
-		my_env = gym.make('RLImitateEnv-v0', real_env = env, model = model)
-		my_env.reset()
-		
-		if _ > 0:
-			tf.get_variable_scope().reuse_variables()
-			
-		agent = deepq.learn(
-			my_env,
-			network='mlp',
-			lr=1e-3,
-			total_timesteps=4000,
-			buffer_size=50000,
-			exploration_fraction=0.1,
-			exploration_final_eps=0.02,
-			train_freq = 10,
-			print_freq=10,
-			callback=callback,
-			load_path = 'mle-models/agent-mle-v0-' + str(_ - 1) + '.pkl' if _ > 0 else None
-		)
-		#print(_, 'agent-mle-v0-' + str(_) + '.pkl')
-		#assert(_==0)
-		agent.save('mle-models/agent-mle-v0-' + str(_) + '.pkl')
-		
-		print("End Cycle")
+	freq = [[dict() for _ in range(env.nA)] for _ in range(env.nS)]
+	for s in range(env.nS):
+		for a in range(env.nA):
+			for ns in range(env.nS):
+				freq[s][a][ns] = 0
+	for __ in range(ntrials):
+		obs = env.reset()
+		for ___ in range(nsamples):
+			action = get_action(env, obs, agent)
+			nobs, reward, stop, info = env.step(action)
+			freq[obs][action][nobs] += 1
+	
+	for s in range(env.nS):
+		for a in range(env.nA):
+			tot = 0
+			for ns in range(env.nS):
+				tot += freq[s][a][ns] 
+			for ns in range(env.nS):
+				freq[s][a][ns] /= tot
+			print("(", s, a, ") -> ", freq[s][a])

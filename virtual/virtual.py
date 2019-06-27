@@ -20,7 +20,7 @@ class VirtualEnv:
         self.dev_set = Dataset(args)
         # self.dataset = Dataset(args)
         self.model = Model(args)
-        self.optimizer = torch.optim.SGD(
+        self.optimizer = torch.optim.Adam(
             self.model.parameters(), lr=args.lr)
 
     def add_data(self, data, train_fraction=0.7):

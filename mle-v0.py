@@ -3,6 +3,8 @@ from baselines import deepq
 import virtual
 import numpy as np
 import tensorflow as tf
+import random
+import torch
 
 class Argument():
 	def __init__(self, env):
@@ -10,11 +12,11 @@ class Argument():
 		self.n_states = env.nS
 		self.n_actions = env.nA
 		self.d_hidden = 100
-		self.n_layers = 0
+		self.n_layers = 1
 		self.dropout = 0.5
-		self.lr = 3e-2
-		self.n_epochs = 1000
-		self.batch_size = 40000
+		self.lr = 3e-4
+		self.n_epochs = 2
+		self.batch_size = 4000
 		self.log_every = 10
 		self.save_every = 0
 		self.eval_every = 10
@@ -35,8 +37,20 @@ def get_action(env, obs, agent):
 		return agent(np.array([obs]))[0]
 		#assert False
 		
+def test_agent(env, agent):
+	policy = []
+	for s in range(env.nS):
+		policy.append(agent(np.array([s]))[0])
+	env.calc_rewards(policy)
+		
 if __name__ == '__main__':	
-	env = gym.make('RLEnv-v0', nS = 5, nA = 5, gamma = 0.9, terminal_steps = 200)
+	tf.set_random_seed(0)
+	random.seed(233)	
+	np.random.seed(1)
+	torch.manual_seed(123)
+	torch.cuda.manual_seed(12312)
+	
+	env = gym.make('RLEnv-v0', nS = 10, nA = 10, gamma = 0.9, terminal_steps = 200)
 	agent = None
 	nsamples = 20
 	ntrials = 2000
@@ -51,18 +65,14 @@ if __name__ == '__main__':
 		for __ in range(ntrials):
 			obs = env.reset()
 			for ___ in range(nsamples):
-				#print(_, __, ___)
 				action = get_action(env, obs, agent)
-				#if _ > 0:
-				#	print('pair is (', obs, ', ', action, ') ', type(action))
-				#	print(np.shape(action))
-				#	print(action.tolist()[0])
 				nobs, reward, stop, info = env.step(action)
 				states.append(obs)
 				actions.append(action)
 				_states.append(nobs)
 				if stop:
 					break
+				obs = nobs
 		data = [states, actions, _states]
 		model.add_data(data)
 		model.train()
@@ -86,8 +96,7 @@ if __name__ == '__main__':
 			callback=callback,
 			load_path = 'mle-models/agent-mle-v0-' + str(_ - 1) + '.pkl' if _ > 0 else None
 		)
-		#print(_, 'agent-mle-v0-' + str(_) + '.pkl')
-		#assert(_==0)
 		agent.save('mle-models/agent-mle-v0-' + str(_) + '.pkl')
 		
+		test_agent(env, agent)
 		print("End Cycle")
