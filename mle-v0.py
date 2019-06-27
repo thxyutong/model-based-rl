@@ -94,9 +94,9 @@ if __name__ == '__main__':
 			train_freq = 10,
 			print_freq=10,
 			callback=callback,
-			load_path = 'mle-models/agent-mle-v0-' + str(_ - 1) + '.pkl' if _ > 0 else None
+			load_path = None#'mle-models/agent-mle-v0-' + str(_ - 1) + '.pkl' if _ > 0 else None
 		)
-		agent.save('mle-models/agent-mle-v0-' + str(_) + '.pkl')
+		#agent.save('mle-models/agent-mle-v0-' + str(_) + '.pkl')
 		
 		test_agent(env, agent)
 		print("End Cycle")
